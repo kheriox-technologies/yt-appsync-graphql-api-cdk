@@ -1,8 +1,8 @@
 {
-  "name": "template-cdk-lambda-base",
+  "name": "appsync-graphql-api",
   "version": "0.1.0",
   "bin": {
-    "template-cdk-lambda-base": "bin/template-cdk-lambda-base.js"
+    "appsync-graphql-api": "bin/appsync-graphql-api.js"
   },
   "scripts": {
     "build": "tsc",
@@ -12,8 +12,10 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "^8.10.97",
+    "@types/fs-extra": "^9.0.13",
     "@types/git-branch": "^2.0.2",
     "@types/jest": "^27.5.0",
+    "@types/lodash": "^4.14.182",
     "@types/node": "10.17.27",
     "@types/prettier": "2.6.0",
     "aws-cdk": "2.24.1",
@@ -23,10 +25,17 @@
     "typescript": "~3.9.7"
   },
   "dependencies": {
+    "@aws-cdk/aws-appsync-alpha": "^2.24.1-alpha.0",
+    "@aws-sdk/client-dynamodb": "^3.92.0",
+    "@aws-sdk/lib-dynamodb": "^3.92.0",
     "aws-cdk-lib": "2.24.1",
     "aws-lambda": "^1.0.7",
     "constructs": "^10.0.0",
+    "fs-extra": "^10.1.0",
     "git-branch": "^2.0.1",
+    "i": "^0.3.7",
+    "lodash": "^4.17.21",
+    "npm": "^8.10.0",
     "source-map-support": "^0.5.21"
   }
 }

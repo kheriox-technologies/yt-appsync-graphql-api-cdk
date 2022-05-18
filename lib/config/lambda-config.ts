@@ -3,7 +3,6 @@ import { LambdaDefinition, CDKContext } from '../../shared/types';
 import { NodejsFunctionProps } from 'aws-cdk-lib/aws-lambda-nodejs';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as iam from 'aws-cdk-lib/aws-iam';
-import { UserPool } from 'aws-cdk-lib/aws-cognito';
 
 // Constants
 const DEFAULT_LAMBDA_MEMORY_MB = 1024;
@@ -11,10 +10,22 @@ const DEFAULT_LAMBDA_TIMEOUT_MINS = 15;
 
 // Returns lambda definitions with custom env
 export const getLambdaDefinitions = (context: CDKContext): LambdaDefinition[] => {
-  const environment = {};
+  const environment = { DDB_TABLE: `${context.appName}-${context.environment}` };
   const lambdaDefinitions: LambdaDefinition[] = [
     {
-      name: 'sample-lambda',
+      name: 'get-users',
+      environment,
+    },
+    {
+      name: 'add-user',
+      environment,
+    },
+    {
+      name: 'delete-user',
+      environment,
+    },
+    {
+      name: 'update-user',
       environment,
     },
   ];

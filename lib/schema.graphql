@@ -1,0 +1,62 @@
+# Types
+type User {
+  itemType: String!;
+  firstName: String!;
+  lastName: String!;
+  email: String!;
+  gender: String!;
+  jobTitle: String!;
+  country: String!;
+}
+
+type GetUsersResponse {
+  data: [User];
+  nextToken: String;
+}
+
+# Inputs
+input AddUserInput {
+  firstName: String!;
+  lastName: String!;
+  email: String!;
+  gender: String!;
+  jobTitle: String!;
+  country: String!;
+}
+input UpdateUserInput {
+  email: String!;
+  firstName: String;
+  lastName: String;
+  gender: String;
+  jobTitle: String;
+  country: String;
+}
+input DeleteUserInput {
+  email: String!;
+}
+input GetUsersInput {
+  email: String;
+  nextToken: String;
+}
+
+# Queries
+type Query {
+  getUsers(getUsersInput: GetUsersInput!): GetUsersResponse
+}
+
+# Mutations
+type Mutation {
+  addUser(addUserInput: AddUserInput!): User
+  updateUser(updateUserInput: UpdateUserInput!): User
+  deleteUser(deleteUserInput: DeleteUserInput!): String
+}
+
+# Subscriptions
+type Subscription {
+  onAddUser: User
+    @aws_subscribe(mutations: ["addUser"])
+  onDeleteUser: String
+    @aws_subscribe(mutations: ["deleteUser"])
+  onUpdateUser: User
+    @aws_subscribe(mutations: ["updateUser"])
+}

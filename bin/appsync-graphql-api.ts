@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 import 'source-map-support/register';
 import * as cdk from 'aws-cdk-lib';
-import { CDKLambdaBaseStack } from '../lib/template-cdk-lambda-base-stack';
+import { AppSyncGraphQLAPIStack } from '../lib/appsync-graphql-api-stack';
 
 import { CDKContext } from '../shared/types';
 import gitBranch from 'git-branch';
@@ -42,12 +42,7 @@ const createStacks = async () => {
       tags,
     };
 
-    const cdkLambdaBaseStack = new CDKLambdaBaseStack(
-      app,
-      `${context.appName}-cdk-lambda-base-stack-${context.environment}`,
-      stackProps,
-      context
-    );
+    new AppSyncGraphQLAPIStack(app, `${context.appName}-stack-${context.environment}`, stackProps, context);
   } catch (error) {
     console.error(error);
   }

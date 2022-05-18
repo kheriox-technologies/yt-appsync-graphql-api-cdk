@@ -14,3 +14,48 @@ export type LambdaDefinition = {
     [key: string]: string;
   };
 };
+
+export type User = {
+  itemType: string;
+  firstName: string;
+  lastName: string;
+  email: string;
+  gender: string;
+  jobTitle: string;
+  country: string;
+};
+
+export type GetUsersParams = {
+  getUsersInput: {
+    nextToken?: string;
+    email?: string;
+  };
+};
+
+export type AddUserParams = {
+  addUserInput: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    gender: string;
+    jobTitle: string;
+    country: string;
+  };
+};
+
+export type UpdateUserParams = {
+  updateUserInput: {
+    email: string;
+    firstName?: string;
+    lastName?: string;
+    gender?: string;
+    jobTitle?: string;
+    country?: string;
+  };
+};
+
+export type DeleteUserParams = {
+  deleteUserInput: {
+    email: string;
+  };
+};
